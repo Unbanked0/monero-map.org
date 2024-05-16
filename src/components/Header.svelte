@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Icon, NavDropdownDesktop, NavDropdownMobile, ThemeToggle } from '$lib/comp';
+	import LanguagesDropdownDesktop from './LanguagesDropdownDesktop.svelte';
+	import LanguagesDropdownMobile from './LanguagesDropdownMobile.svelte';
 
 	const navLinks = [
 		{ title: 'Map', url: '/map', icon: 'map' },
@@ -106,6 +108,7 @@
 	</nav>
 
 	<ThemeToggle />
+	<LanguagesDropdownDesktop />
 </header>
 
 <!-- mobile header -->
@@ -169,5 +172,6 @@
 				</a>
 			{/if}
 		{/each}
+		<LanguagesDropdownMobile />
 	</nav>
 </header>

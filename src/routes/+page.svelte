@@ -2,6 +2,7 @@
 	import { Footer, Header, HeaderPlaceholder, Icon } from '$lib/comp';
 	import { apps, theme } from '$lib/store';
 	import { detectTheme } from '$lib/utils';
+	import { T } from '$lib/i18n';
 </script>
 
 <svelte:head>
@@ -27,7 +28,7 @@
 							? 'text-white'
 							: 'gradient'} text-center text-4xl font-semibold !leading-tight md:text-5xl xl:text-left"
 					>
-						Easily find places to spend sats anywhere on the planet.
+						{$T.page.welcome.title}
 					</h1>
 				{:else}
 					<HeaderPlaceholder />
@@ -63,7 +64,7 @@
 					{/each}
 				</div>
 				<h2 class="text-center text-xl font-semibold text-primary dark:text-white xl:text-left">
-					Our apps and the underlying data are free and open source.
+					{$T.page.welcome.open}
 					<br /><br />
 					We use
 					<a
