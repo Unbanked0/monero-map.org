@@ -16,6 +16,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import 'tippy.js/dist/tippy.css';
 	import '../app.css';
+	import { localeFlags } from '$lib/i18n';
 
 	axios.defaults.timeout = 600000;
 
@@ -65,6 +66,7 @@
 		<meta property="alby:image" content="/images/logo.svg" />
 		<meta property="alby:name" content="BTC Map" />
 	{/if}
+	{@html $localeFlags.headerContent}
 </svelte:head>
 
 <slot />

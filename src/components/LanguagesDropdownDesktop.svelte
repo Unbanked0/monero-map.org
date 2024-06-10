@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { locale, locales, type MLocale } from '$lib/i18n';
-	import type { DropdownLink } from '$lib/types';
-	import { localeFlags } from 'omni18n';
+	import { locale, locales, localeFlags } from '$lib/i18n';
+	import type { Locale } from 'omni18n/ts';
 	import OutClick from 'svelte-outclick';
 
 	function selfLocale(locale: string) {
@@ -12,13 +11,13 @@
 		.filter((l) => $locale !== l)
 		.map((locale) => ({
 			locale,
-			flag: localeFlags(locale)[0],
+			flag: $localeFlags(locale)[0],
 			text: selfLocale(locale)
 		}));
 	let flag: string;
-	$: flag = localeFlags($locale)[0];
+	$: flag = $localeFlags($locale)[0];
 
-	function setLocale(newLocale: MLocale) {
+	function setLocale(newLocale: Locale) {
 		locale.set(newLocale);
 		show = false;
 	}
@@ -35,7 +34,7 @@
 			? 'dark:!text-link'
 			: ''} mr-4 mt-4 flex items-center text-xl font-semibold text-link transition-colors hover:text-hover dark:text-white dark:hover:text-link md:mr-0 md:mt-0"
 	>
-		{flag}
+		{@html flag}
 	</button>
 
 	<!-- dropdown items -->
@@ -49,7 +48,7 @@
 							? 'dark:!text-link'
 							: ''}mr-4 mt-4 flex items-center text-xl font-semibold text-link transition-colors hover:text-hover dark:text-white dark:hover:text-link md:mr-0 md:mt-0"
 					>
-						{desc.flag}
+						{@html desc.flag}
 						{desc.text}
 					</button>
 				{/each}
